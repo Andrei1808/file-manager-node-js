@@ -1,15 +1,13 @@
-import { argv } from 'process'
+import { argv } from 'process';
 
-export default async function userName() {
-  const userName = argv[argv.length - 1].replace('--username=', '').trim()
-
+export default async function userName(name) {
   try {
-    if (argv.length > 2 && userName.length) {
-      console.log(`Welcome to the File Manager, ${userName}!`)
+    if (argv.length > 2 && name.length) {
+      console.log(`Welcome to the File Manager, ${name}!`);
     } else {
-      console.log(`Welcome to the File Manager, my friend!`)
+      console.log(`Welcome to the File Manager, my friend!`);
     }
   } catch (err) {
-    console.log(err)
+    console.log(err);
   }
 }
