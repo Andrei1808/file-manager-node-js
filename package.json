@@ -5,13 +5,16 @@
     "main": "index.js",
     "type": "module",
     "scripts": {
-      "start": "node ./src/index.js"
+        "start": "node ./src/index.js"
     },
     "repository": {
-      "type": "git",
-      "url": "https://github.com/Andrei1808/file-manager-node-js"
+        "type": "git",
+        "url": "https://github.com/Andrei1808/file-manager-node-js"
     },
     "keywords": [],
     "author": "Andrei K.",
-    "license": "ISC"
-  }
+    "license": "ISC",
+    "devDependencies": {
+        "prettier": "^3.2.4"
+    }
+}
