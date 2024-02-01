@@ -1,16 +1,17 @@
-import os from 'os';
-import { chdir, cwd } from 'process';
-import userName from './handlers/userName.js';
+import os from 'os'
+import process from 'process'
+import userName from './handlers/userName.js'
+import { createInterface } from 'readline'
 
+async function App() {
+  process.chdir(os.homedir())
+  console.info(`You are currently in ${process.cwd()}`)
+  userName()
 
-
-
- async function App() {
-chdir(os.homedir());
-    console.info(`You are currently in ${cwd()}`);
-    
-    userName()
-    
+  const readline = createInterface({
+    input: process.stdin,
+    output: process.stdout,
+  })
 }
-  
-App();
+
+App()
