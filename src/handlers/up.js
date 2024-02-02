@@ -8,9 +8,10 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 export default async function Up() {  
     try {
        process.chdir('..')
-        console.info(`You are currently in ${process.cwd()}`);
       } catch (error) {
         console.error('Operation failed')
+    } finally {
+        console.info(`You are currently in ${process.cwd()}`);
       }
 }
   
