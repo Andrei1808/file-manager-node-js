@@ -8,6 +8,8 @@ import up from './handlers/up.js';
 import cd from './handlers/cd.js';
 import ls from './handlers/ls.js';
 import cat from './handlers/cat.js';
+import add from './handlers/add.js';
+import rn from './handlers/rn.js';
 
 async function App() {
   process.chdir(os.homedir());
@@ -35,12 +37,16 @@ async function App() {
         readline.close();
       } else if (input === 'up') {
         eventEmitter.emit('up');
-      } else if (input.includes('cd ')) {
+      } else if (input.startsWith('cd ')) {
         eventEmitter.emit('cd', input);
       } else if (input === 'ls') {
         eventEmitter.emit('ls');
-      } else if (input.includes('cat ')) {
+      } else if (input.startsWith('cat ')) {
         eventEmitter.emit('cat', input);
+      } else if (input.startsWith('add ')) {
+        eventEmitter.emit('add', input);
+      } else if (input.startsWith('rn ')) {
+        eventEmitter.emit('rn', input);
       }
     })
     .on('close', () => {
@@ -50,7 +56,7 @@ async function App() {
   const eventEmitter = new EventEmitter();
   eventEmitter.setMaxListeners(0);
 
-  eventEmitter.on('up', up).on('cd', cd).on('ls', ls).on('cat', cat);
+  eventEmitter.on('up', up).on('cd', cd).on('ls', ls).on('cat', cat).on('add', add).on('rn', rn);
 }
 
 App();
