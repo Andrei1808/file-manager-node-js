@@ -28,22 +28,21 @@ async function App() {
   });
 
   readline
-    .on('SIGINT', () => readline.close())
-    .on('line', (input) => {
-      if (input === '.exit') readline.close();
-    })
-    .on('close', () => {
-      console.log(`Thank you for using File Manager, ${user}!`);
-    })
-    .on('line', (input) => {
-      if (input === 'up') eventEmitter.emit('up');
-    })
-    .on('line', (input) => {
-      if (input.includes(`cd `)) eventEmitter.emit('cd', input);
-    })
-    .on('line', (input) => {
-      if (input === 'ls') eventEmitter.emit('ls');
-    });
+  .on('SIGINT', () => readline.close())
+  .on('line', (input) => {
+    if (input === '.exit') {
+      readline.close();
+    } else if (input === 'up') {
+      eventEmitter.emit('up');
+    } else if (input.includes('cd ')) {
+      eventEmitter.emit('cd', input);
+    } else if (input === 'ls') {
+      eventEmitter.emit('ls');
+    }
+  })
+  .on('close', () => {
+    console.log(`Thank you for using File Manager, ${user}!`);
+  });
 
   const eventEmitter = new EventEmitter();
   eventEmitter.setMaxListeners(0);

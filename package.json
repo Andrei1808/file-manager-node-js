@@ -1,7 +1,6 @@
 {
-  "name": "file-manager-node-js",
+  "name": "file-manager-node",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "type": "module",
   "scripts": {
@@ -10,12 +9,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Andrei1808/file-manager-node-js"
+    "url": "git+https://github.com/Andrei1808/file-manager-node-js.git"
   },
   "keywords": [],
   "author": "Andrei K.",
   "license": "ISC",
   "devDependencies": {
     "prettier": "^3.2.4"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/Andrei1808/file-manager-node-js/issues"
+  },
+  "homepage": "https://github.com/Andrei1808/file-manager-node-js#readme",
+  "description": ""
 }
