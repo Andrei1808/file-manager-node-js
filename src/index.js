@@ -7,6 +7,7 @@ import EventEmitter from 'events';
 import up from './handlers/up.js';
 import cd from './handlers/cd.js';
 import ls from './handlers/ls.js';
+import cat from './handlers/cat.js';
 
 async function App() {
   process.chdir(os.homedir());
@@ -30,7 +31,7 @@ async function App() {
   readline
     .on('SIGINT', () => readline.close())
     .on('line', (input) => {
-      if (input === '.exit') {
+      if (input.trim === '.exit') {
         readline.close();
       } else if (input === 'up') {
         eventEmitter.emit('up');
@@ -38,6 +39,8 @@ async function App() {
         eventEmitter.emit('cd', input);
       } else if (input === 'ls') {
         eventEmitter.emit('ls');
+      } else if (input.includes('cat ')) {
+        eventEmitter.emit('cat', input);
       }
     })
     .on('close', () => {
@@ -47,7 +50,7 @@ async function App() {
   const eventEmitter = new EventEmitter();
   eventEmitter.setMaxListeners(0);
 
-  eventEmitter.on('up', up).on('cd', cd).on('ls', ls);
+  eventEmitter.on('up', up).on('cd', cd).on('ls', ls).on('cat', cat);
 }
 
 App();

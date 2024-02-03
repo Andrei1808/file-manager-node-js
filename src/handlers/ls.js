@@ -16,10 +16,10 @@ export default async function Ls() {
           };
         } catch (err) {
           console.error('Operation failed 1');
-          return null 
+          return null;
         }
       })
-    ); 
+    );
     const filteredFilesData = filesData.filter(Boolean);
     console.table(filteredFilesData);
   } catch (error) {
