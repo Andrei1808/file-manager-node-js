@@ -34,7 +34,7 @@ async function App() {
   readline
     .on('SIGINT', () => readline.close())
     .on('line', (input) => {
-      if (input.trim === '.exit') {
+      if (input === '.exit') {
         readline.close();
       } else if (input === 'up') {
         eventEmitter.emit('up');
