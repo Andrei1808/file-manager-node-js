@@ -7,7 +7,6 @@ export default async function Add(input) {
   const currPath = process.cwd();
   const filePath = path.join(currPath, fileName);
 
-
   try {
     fs.promises.writeFile(filePath, '');
   } catch (error) {

@@ -12,6 +12,7 @@ import add from './handlers/add.js';
 import rn from './handlers/rn.js';
 import cp from './handlers/cp.js';
 import mv from './handlers/mv.js';
+import rm from './handlers/rm.js';
 
 async function App() {
   process.chdir(os.homedir());
@@ -49,10 +50,12 @@ async function App() {
         eventEmitter.emit('add', input);
       } else if (input.startsWith('rn ')) {
         eventEmitter.emit('rn', input);
-      }else if (input.startsWith('cp ')) {
+      } else if (input.startsWith('cp ')) {
         eventEmitter.emit('cp', input);
-      }else if (input.startsWith('mv ')) {
+      } else if (input.startsWith('mv ')) {
         eventEmitter.emit('mv', input);
+      } else if (input.startsWith('rm ')) {
+        eventEmitter.emit('rm', input);
       }
     })
     .on('close', () => {
@@ -62,7 +65,16 @@ async function App() {
   const eventEmitter = new EventEmitter();
   eventEmitter.setMaxListeners(0);
 
-  eventEmitter.on('up', up).on('cd', cd).on('ls', ls).on('cat', cat).on('add', add).on('rn', rn).on('cp', cp).on('mv', mv);
+  eventEmitter
+    .on('up', up)
+    .on('cd', cd)
+    .on('ls', ls)
+    .on('cat', cat)
+    .on('add', add)
+    .on('rn', rn)
+    .on('cp', cp)
+    .on('mv', mv)
+    .on('rm', rm);
 }
 
 App();
