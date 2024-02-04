@@ -6,9 +6,7 @@ export default async function Add(input) {
   const fileName = input.replace('add', '').trim();
   const currPath = process.cwd();
   const filePath = path.join(currPath, fileName);
-  console.log(fileName);
-  console.log(currPath);
-  console.log(filePath);
+
 
   try {
     fs.promises.writeFile(filePath, '');

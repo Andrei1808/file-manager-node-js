@@ -10,6 +10,7 @@ import ls from './handlers/ls.js';
 import cat from './handlers/cat.js';
 import add from './handlers/add.js';
 import rn from './handlers/rn.js';
+import cp from './handlers/cp.js';
 
 async function App() {
   process.chdir(os.homedir());
@@ -47,6 +48,8 @@ async function App() {
         eventEmitter.emit('add', input);
       } else if (input.startsWith('rn ')) {
         eventEmitter.emit('rn', input);
+      }else if (input.startsWith('cp ')) {
+        eventEmitter.emit('cp', input);
       }
     })
     .on('close', () => {
@@ -56,7 +59,7 @@ async function App() {
   const eventEmitter = new EventEmitter();
   eventEmitter.setMaxListeners(0);
 
-  eventEmitter.on('up', up).on('cd', cd).on('ls', ls).on('cat', cat).on('add', add).on('rn', rn);
+  eventEmitter.on('up', up).on('cd', cd).on('ls', ls).on('cat', cat).on('add', add).on('rn', rn).on('cp', cp);
 }
 
 App();
