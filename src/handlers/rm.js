@@ -1,6 +1,6 @@
 import process from 'process';
 import path from 'path';
-import fs, { Stats } from 'fs';
+import fs from 'fs';
 
 export default async function Rm(input) {
   const files = input.replace('rm', '').trim();

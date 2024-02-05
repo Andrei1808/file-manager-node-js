@@ -13,7 +13,7 @@ export default async function Os(input) {
         if (!validInputArguments.includes(inputArgument)) throw new Error(`Invalid argument`);
         
         if (inputArgument === '--EOL') {
-            console.log(Object.values(osConstants['--EOL']));
+            console.log(Object.values(osConstants['--EOL']).join(''));
         }
         if (inputArgument === '--cpus') {
             const cpusInfo = cpus().map(({ model, speed }) => {
