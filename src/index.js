@@ -16,6 +16,7 @@ import rm from './handlers/rm.js';
 import osHandler from './handlers/os.js';
 import hash from './handlers/hash.js';
 import compress from './handlers/compress.js';
+import decompress from './handlers/decompress.js';
 
 async function App() {
   process.chdir(os.homedir());
@@ -65,6 +66,8 @@ async function App() {
         eventEmitter.emit('hash', input);
       } else if (input.startsWith('compress ')) {
         eventEmitter.emit('compress', input);
+      }else if (input.startsWith('decompress ')) {
+        eventEmitter.emit('decompress', input);
       }
     })
     .on('close', () => {
@@ -86,7 +89,8 @@ async function App() {
     .on('rm', rm)
     .on('os', osHandler)
     .on('hash', hash)
-    .on('compress', compress);
+    .on('compress', compress)
+    .on('decompress', decompress);
 }
 
 App();
