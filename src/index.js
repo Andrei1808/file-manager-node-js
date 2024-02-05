@@ -13,6 +13,7 @@ import rn from './handlers/rn.js';
 import cp from './handlers/cp.js';
 import mv from './handlers/mv.js';
 import rm from './handlers/rm.js';
+import osHandler from './handlers/os.js';
 
 async function App() {
   process.chdir(os.homedir());
@@ -56,6 +57,8 @@ async function App() {
         eventEmitter.emit('mv', input);
       } else if (input.startsWith('rm ')) {
         eventEmitter.emit('rm', input);
+      }else if (input.startsWith('os ')) {
+        eventEmitter.emit('os', input);
       }
     })
     .on('close', () => {
@@ -74,7 +77,8 @@ async function App() {
     .on('rn', rn)
     .on('cp', cp)
     .on('mv', mv)
-    .on('rm', rm);
+    .on('rm', rm)
+    .on('os', osHandler);
 }
 
 App();
