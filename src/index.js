@@ -58,9 +58,9 @@ async function App() {
         eventEmitter.emit('mv', input);
       } else if (input.startsWith('rm ')) {
         eventEmitter.emit('rm', input);
-      }else if (input.startsWith('os ')) {
+      } else if (input.startsWith('os ')) {
         eventEmitter.emit('os', input);
-      }else if (input.startsWith('hash ')) {
+      } else if (input.startsWith('hash ')) {
         eventEmitter.emit('hash', input);
       }
     })
