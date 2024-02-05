@@ -3,12 +3,17 @@ import path from 'path';
 import fs from 'fs';
 
 export default async function Add(input) {
-  const fileName = input.replace('add', '').trim();
+  const fileName = input.replace('add ', '');
   const currPath = process.cwd();
-  const filePath = path.join(currPath, fileName);
 
+   
   try {
-    fs.promises.writeFile(filePath, '');
+    if (fileName.length){
+    const filePath = path.join(currPath, fileName);
+      fs.promises.writeFile(filePath, '')
+    } else {
+      console.error('Invalid input!');
+    }
   } catch (error) {
     console.error('Operation failed');
   } finally {

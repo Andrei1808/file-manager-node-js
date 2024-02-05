@@ -9,4 +9,6 @@ const osConstants = {
   '--architecture': arch(),
 };
 
-export default osConstants;
+
+
+export default { osConstants };

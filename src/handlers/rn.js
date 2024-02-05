@@ -8,6 +8,8 @@ export default async function Rn(input) {
 
   const filesArray = files.split(' ');
 
+  if (filesArray.length !== 2) console.error('Invalid input!');
+
   try {
     const currentlyFile = path.join(currPath, filesArray[0]);
     const createdFile = path.join(currPath, filesArray[1]);

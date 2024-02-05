@@ -66,8 +66,10 @@ async function App() {
         eventEmitter.emit('hash', input);
       } else if (input.startsWith('compress ')) {
         eventEmitter.emit('compress', input);
-      }else if (input.startsWith('decompress ')) {
+      } else if (input.startsWith('decompress ')) {
         eventEmitter.emit('decompress', input);
+      } else {
+        console.error('Invalid input!!!');
       }
     })
     .on('close', () => {

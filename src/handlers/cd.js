@@ -7,7 +7,11 @@ export default async function Cd(folderPath) {
   const destinationPath = path.resolve(currPath, editedPath);
 
   try {
-    process.chdir(destinationPath);
+    if (editedPath.length) {
+      process.chdir(destinationPath);
+    }else {
+      console.log('Invalid input');
+    }
   } catch (error) {
     console.error('Operation failed');
   } finally {

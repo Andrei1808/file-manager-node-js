@@ -4,13 +4,11 @@ import { createHash } from 'crypto';
 import fs from 'fs';
 
 export default async function Hash(input) {
-  const files = input.replace('hash', '').trim();
-  const inputArray = files.split(' ');
-
-  const currFile = inputArray[0];
-  const pathToCurrentFile = path.resolve(process.cwd(), currFile);
+  const filename = input.replace('hash ', '').trim();
 
   try {
+    if (filename.length){
+    const pathToCurrentFile = path.resolve(process.cwd(), filename);
     const hash = createHash('sha256');
     const readStream = fs.createReadStream(pathToCurrentFile);
     readStream.on('data', (chunk) => {
@@ -19,7 +17,10 @@ export default async function Hash(input) {
 
     readStream.on('end', () => {
       console.log(hash.digest('hex'));
-    });
+    })
+    } else {
+      console.error('Invalid input!');
+    }
   } catch (error) {
     console.error('Operation failed');
   } finally {
