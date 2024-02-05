@@ -9,7 +9,7 @@ export default async function Cd(folderPath) {
   try {
     if (editedPath.length) {
       process.chdir(destinationPath);
-    }else {
+    } else {
       console.log('Invalid input');
     }
   } catch (error) {

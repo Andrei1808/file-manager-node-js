@@ -10,14 +10,13 @@ export default async function Decompress(input) {
 
   const currFile = inputArray[0];
   const destinationPath = inputArray[1];
-  
-  if (inputArray.length !== 2) console.error('Invalid input!');
 
+  if (inputArray.length !== 2) console.error('Invalid input!');
 
   try {
     const pathToDestination = path.resolve(process.cwd(), currFile.replace('.br', ''));
     const pathToCurrentFile = path.resolve(destinationPath, `${currFile}`);
-  
+
     const rs = createReadStream(pathToCurrentFile);
     const ws = createWriteStream(pathToDestination);
     const brotliDecompressAlgoritm = createBrotliDecompress();

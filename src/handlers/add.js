@@ -6,11 +6,10 @@ export default async function Add(input) {
   const fileName = input.replace('add ', '');
   const currPath = process.cwd();
 
-   
   try {
-    if (fileName.length){
-    const filePath = path.join(currPath, fileName);
-      fs.promises.writeFile(filePath, '')
+    if (fileName.length) {
+      const filePath = path.join(currPath, fileName);
+      fs.promises.writeFile(filePath, '');
     } else {
       console.error('Invalid input!');
     }

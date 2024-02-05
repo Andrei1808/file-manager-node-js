@@ -12,8 +12,6 @@ export default async function Compress(input) {
   const currFile = inputArray[0];
   const destinationPath = inputArray[1];
 
-
-
   try {
     const pathToCurrentFile = path.resolve(process.cwd(), currFile);
     const pathToDestination = path.resolve(destinationPath, `${currFile}.br`);

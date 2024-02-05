@@ -8,17 +8,17 @@ export default async function Cat(input) {
   let result = '';
 
   try {
-    if(editedPath.length){
-    const destinationPath = path.resolve(currPath, editedPath);
+    if (editedPath.length) {
+      const destinationPath = path.resolve(currPath, editedPath);
 
-    const readStream = fs.createReadStream(destinationPath);
-    readStream.on('data', (chunk) => {
-      result += chunk.toString();
-    });
+      const readStream = fs.createReadStream(destinationPath);
+      readStream.on('data', (chunk) => {
+        result += chunk.toString();
+      });
 
-    readStream.on('end', () => {
-      console.log(result);
-    })
+      readStream.on('end', () => {
+        console.log(result);
+      });
     } else {
       console.log('Invalid input');
     }

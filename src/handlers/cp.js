@@ -11,12 +11,10 @@ export default async function Cp(input) {
   const currFile = inputArray[0];
   const destination = inputArray[1];
 
-
-
   try {
     const pathToCurrentFile = path.resolve(process.cwd(), currFile);
     const pathToDestination = path.resolve(destination, currFile);
-  
+
     const rs = createReadStream(pathToCurrentFile);
     const ws = createWriteStream(pathToDestination);
     await pipeline(rs, ws);
